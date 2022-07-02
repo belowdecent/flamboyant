@@ -10,8 +10,6 @@ import openfl.display.DisplayObject;
 class Universe {
 	static final componentManager:ComponentManager = new ComponentManager();
 
-	static var root:Main;
-
 	static function free(entity:DisplayObject):DisplayObject {
 		function freeChildren(entity:DisplayObjectContainer) {
 			for (i in 0...entity.numChildren) {
