@@ -1,12 +1,11 @@
 package ec;
 
 import openfl.display.DisplayObject;
-import haxe.ds.WeakMap;
 
 typedef ClassName = String;
 
 class ComponentManager {
-	public var metaMap:Map<ClassName, WeakMap<DisplayObject, Any>>;
+	public var metaMap:Map<ClassName, Map<DisplayObject, Any>>;
 
 	public function new() {
 		metaMap = new Map();
@@ -16,7 +15,7 @@ class ComponentManager {
 		var className = Type.getClassName(c);
 
 		if (!metaMap.exists(className))
-			metaMap.set(className, new WeakMap<DisplayObject, T>());
+			metaMap.set(className, new Map<DisplayObject, T>());
 
 		return cast metaMap[className];
 	}
