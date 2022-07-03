@@ -16,6 +16,7 @@ class Main extends Sprite {
 
 		var bitmap1 = new Bitmap(bitmapData);
 		var bitmap2 = new Bitmap(bitmapData);
+
 		bitmap1.addComponent(new Moving(5, 5, bitmap1));
 		bitmap2.addComponent(new Moving(7, -5, bitmap2));
 
