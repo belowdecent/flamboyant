@@ -1,5 +1,6 @@
 package ec;
 
+import openfl.events.EventDispatcher;
 import openfl.display.DisplayObjectContainer;
 import openfl.display.DisplayObject;
 
@@ -9,6 +10,7 @@ import openfl.display.DisplayObject;
 @:publicFields
 class Universe {
 	static final componentManager:ComponentManager = new ComponentManager();
+	static final systemManager:SystemManager = new SystemManager();
 
 	static function free(entity:DisplayObject):DisplayObject {
 		function freeChildren(entity:DisplayObjectContainer) {
@@ -48,5 +50,13 @@ class Universe {
 
 	static inline function instances<T>(componentClass:Class<T>):Iterator<T> {
 		return componentManager.getECMapOf(componentClass).iterator();
+	}
+
+	static inline function bindSystem(eventType:String, system:System) {
+		systemManager.addSystem(system, eventType);
+	}
+
+	static inline function listen(object:EventDispatcher, eventType:String) {
+		object.addEventListener(eventType, systemManager.run);
 	}
 }

@@ -1,5 +1,7 @@
 package ec;
 
-interface System {
-	function run():Void;
+import openfl.events.Event;
+
+class System {
+	public function run(e:Event):Void {};
 }
